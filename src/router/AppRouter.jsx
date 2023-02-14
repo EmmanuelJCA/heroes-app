@@ -1,7 +1,6 @@
-import { Children } from "react"
 import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom"
-import { LoginPage } from "../auth/pages/LoginPage"
-import { DcPage, MarvelPage } from "../heroes/pages"
+import { LoginPage } from "../auth"
+import { DcPage, MarvelPage } from "../heroes"
 import { HeroesApp } from "../HeroesApp"
 
 const router = createBrowserRouter([
