@@ -1,12 +1,15 @@
 import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom"
 import { LoginPage } from "../auth"
-import { DcPage, MarvelPage } from "../heroes"
-import { HeroesApp } from "../HeroesApp"
+import { HeroesLayout, DcPage, HeroPage, MarvelPage, SearchPage } from "../heroes"
 
 const router = createBrowserRouter([
     {
+        path: "/login",
+        element: <LoginPage />,
+    },
+    {
         path: "/",
-        element: <HeroesApp />,
+        element: <HeroesLayout />,
         children: [
             {
                 path: "/marvel",
@@ -17,15 +20,19 @@ const router = createBrowserRouter([
                 element: <DcPage />,
             },
             {
-                path: "/login",
-                element: <LoginPage />,
+                path: "/search",
+                element: <SearchPage />,
+            },
+            {
+                path: "/hero",
+                element: <HeroPage />,
             },
             {
                 path: "/",
                 element: <Navigate to={"/marvel "}/>,
             }
         ]
-    }
+    },
     
 ])
 export const AppRouter = () => {
