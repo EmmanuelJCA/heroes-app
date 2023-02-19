@@ -1,15 +1,17 @@
 import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom"
 import { LoginPage } from "../auth"
 import { HeroesLayout, DcPage, HeroPage, MarvelPage, SearchPage } from "../heroes"
+import { PrivateRoute } from "./PrivateRoute"
+import { PublicRoute } from "./PublicRoute"
 
 const router = createBrowserRouter([
     {
         path: "/login",
-        element: <LoginPage />,
+        element: <PublicRoute> <LoginPage /> </PublicRoute>,
     },
     {
         path: "/",
-        element: <HeroesLayout />,
+        element: <PrivateRoute> <HeroesLayout /> </PrivateRoute>,
         children: [
             {
                 path: "/marvel",
