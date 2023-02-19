@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context'
+import Swal from 'sweetalert2'
 
 export const LoginPage = () => {
 
@@ -13,7 +14,15 @@ export const LoginPage = () => {
     const onLogin = ( event ) => {
         event.preventDefault()
 
-        if( user.trim().length <= 1 ) return
+        if( user.trim().length <= 1 ) {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Debes ingresar tu nombre!',
+                showConfirmButton: false,
+                timer: 2000,
+            })
+        }
 
         const lastPath = localStorage.getItem('lastPath') || '/'
 

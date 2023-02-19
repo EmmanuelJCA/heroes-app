@@ -3,6 +3,7 @@ import queryString from 'query-string'
 import { useForm } from '../../hooks/useForm'
 import { HeroCard } from '../components/HeroCard'
 import { getHeroesByName } from '../helpers'
+import Swal from 'sweetalert2'
 
 export const SearchPage = () => {
 
@@ -23,7 +24,15 @@ export const SearchPage = () => {
 	const onSearchSubmit = (event) => {
 		event.preventDefault()
 
-		if( searchText.trim().length <= 1 ) return 
+		if( searchText.trim().length <= 1 ) {
+			return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Debes ingresar un heroe!',
+                showConfirmButton: false,
+                timer: 2000,
+            })
+		} 
 
 		navigate(`?q=${ searchText }`)
 	}
